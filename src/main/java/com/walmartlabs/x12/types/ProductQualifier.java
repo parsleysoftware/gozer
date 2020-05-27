@@ -21,10 +21,14 @@ package com.walmartlabs.x12.types;
  * set of values used on DEX G8305, ASN SN103, &c
  */
 public enum ProductQualifier {
+    BL("BRAND/LABEL"),
     DI("DEPOSIT ITEM NUMBER"),
     EN("EAN/UCC-13"),
     EO("EAN/UCC-8"),
+    IN("BUYER ITEM NUMBER"),
+    MG("MANUFACTURER ITEM NUMBER"),
     NR("NONRESALABLE ITEM"),
+    SR("SUBSTITUTE PRODUCT NUMBER"),
     UK("EAN/UCC-14"),
     UP("EAN/UCC-12"),
     VN("VENDOR ITEM NUMBER"),

@@ -27,6 +27,7 @@ import java.util.Optional;
 public enum UnitMeasure {
     BX("BOX"),
     CA("CASE"),
+    CATCH_WEIGHT("CATCH_WEIGHT", "31"),
     CT("CARTON"),
     EA("EACH"),
     DZ("DOZEN"),
@@ -35,6 +36,7 @@ public enum UnitMeasure {
     KG("KILOGRAM"),
     LB("POUND"),
     PK("PACKAGE"),
+    PN("POUNDS_NET"),
     PL("PALLET"),
     TK("TANK"),
     UN("UNIT"),
