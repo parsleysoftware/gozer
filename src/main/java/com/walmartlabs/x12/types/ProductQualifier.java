@@ -17,7 +17,8 @@ limitations under the License.
 package com.walmartlabs.x12.types;
 
 /**
- * product/service id qualifier values used on DEX G8305 used on ASN SN103
+ * product/service id qualifier (x12 element 235)
+ * set of values used on DEX G8305, ASN SN103, &c
  */
 public enum ProductQualifier {
     DI("DEPOSIT ITEM NUMBER"),

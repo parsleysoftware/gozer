@@ -16,8 +16,13 @@ limitations under the License.
 
 package com.walmartlabs.x12.types;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 /**
- * unit of measure code set of values used on DEX G8303 used on ASN LIN08
+ * unit or basis of measure code (x12 element 355)
+ * set of values used on DEX G8303, ASN LIN08, INVOIC IT302, &c
  */
 public enum UnitMeasure {
     BX("BOX"),
@@ -36,9 +41,28 @@ public enum UnitMeasure {
     UNKNOWN("UNKNOWN");
 
     private String description;
+    private final Optional<String> nonJavaName;
+
+    // some values are not valid Java identifiers, so can't rely on native Java valueOf()
+    private static Map<String, UnitMeasure> nameMap = new HashMap<>();
 
     private UnitMeasure(String desc) {
+        this(desc, Optional.empty());
+    }
+
+    private UnitMeasure(String desc, String nonJavaName) {
+        this(desc, Optional.of(nonJavaName));
+    }
+
+    private UnitMeasure(String desc, Optional<String> nonJavaName) {
         this.description = desc;
+        this.nonJavaName = nonJavaName;
+    }
+
+    static {
+        for (UnitMeasure m: UnitMeasure.values()) {
+            nameMap.put(m.nonJavaName.orElse(m.name()), m);
+        }
     }
 
     private void setDescription(String desc) {
@@ -59,16 +83,7 @@ public enum UnitMeasure {
         if (code == null) {
             return null;
         } else {
-            UnitMeasure returnEnum = UnitMeasure.UNKNOWN;
-            returnEnum.setDescription(code);
-
-            try {
-                returnEnum = UnitMeasure.valueOf(code);
-            } catch (Exception e) {
-                // illegal value so returning UNKNOWN
-            }
-
-            return returnEnum;
+            return nameMap.getOrDefault(code, UnitMeasure.UNKNOWN);
         }
     }
 
