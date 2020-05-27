@@ -15,20 +15,20 @@ public class InvoiceTransactionSet extends AbstractX12TransactionSet {
     // BIG
     //
     // BIG 01
-    private LocalDate invoiceDate;
+    LocalDate invoiceDate;
     // BIG 02
-    private String invoiceNumber;
+    String invoiceNumber;
     // BIG 03
-    private LocalDate purchaseOrderDate;
+    LocalDate purchaseOrderDate;
     // BEG 04
-    private String purchaseOrderNumber;
+    String purchaseOrderNumber;
 
-    private Map<String, String> notes;
+    Map<String, String> notes;
 
-    private List<N1PartyIdentification> n1PartyIdentifications;
+    List<N1PartyIdentification> n1PartyIdentifications;
 
     // CUR 02
-    private String currency;
+    String currency;
 
     // DTM with qualifier 011
     public DTMDateTimeReference getShippedDate() {
@@ -44,7 +44,7 @@ public class InvoiceTransactionSet extends AbstractX12TransactionSet {
     }
     // DTM with qualifier 035
     // other DTMs
-    private List<DTMDateTimeReference> dtms = new ArrayList<>();
+    List<DTMDateTimeReference> dtms = new ArrayList<>();
 
     public LocalDate getInvoiceDate() {
         return invoiceDate;
